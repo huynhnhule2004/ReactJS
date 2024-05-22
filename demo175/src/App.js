@@ -1,5 +1,8 @@
 import './App.css';
+import CComponent from './CComponent';
 import Demo from "./Demo";
+import Student from './Student';
+
 
 
 
@@ -8,9 +11,10 @@ function App() {
     <>
 
 
-      <Demo></Demo>
-      <Demo></Demo>
-      <Demo></Demo>
+      <Student></Student>
+      <CComponent></CComponent>
+
+
 
     </>
   );
