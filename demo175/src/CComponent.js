@@ -1,28 +1,44 @@
 import React, {Component} from "react";
-let x = 10;
+
 
 
 class CComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            y: 20,
-        }
+            list : [
+                {name: "A",age: 20},
+                {naem: "B", age: 30},
+            ],
+            inpName: "",
+            inpAge: "",
+        };
     }
-    upX = () => {
-        x++;
+
+    add = () => {
+        this.state.list.push({
+            name:this.state.inpName,
+            age: this.state.inpAge,
+        });
+        this.setState({list: this.state.list});
     }
-    upY = () => {
-        this.setState({y: this.state.y + 1})
+
+    changeInp(e) {
+        this.setState({[e.target.name]: e.target.value});
     }
 
     render() {
         return (
             <>
-            <h2>CComponent demo {x}, {this.state.y}</h2>
-            <button onClick={this.upX}>Tăng X</button>
-            <button onClick={this.upY}>Tăng Y</button>
+            <h2>CComponent demo {this.state.inpName}, {this.state.inpAge}{" "}</h2>
+            {this.state.list.map((e) => (
+                <h3>
+                    {e.name}, {e.age}
+                </h3>
+            ))}
 
+            <input type="text" name="inpAge" onChange={(e) => {this.changeInp(e);}}/>
+            <button onClick={() => {this.add()}}>Create</button>
             </>
         )
     }
